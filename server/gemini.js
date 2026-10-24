@@ -45,7 +45,7 @@ function formatAiErrorMessage(err) {
 }
 
 export function createGemini({ apiKey, model, timeoutMs = 25000 } = {}) {
-  const effectiveKey = apiKey || process.env.GEMINI_API_KEY;
+  const effectiveKey = apiKey !== undefined ? apiKey : process.env.GEMINI_API_KEY;
   const initialModel = model || process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite';
   const ai = effectiveKey ? new GoogleGenAI({ apiKey: effectiveKey }) : null;
 
